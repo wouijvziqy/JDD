@@ -14,10 +14,25 @@ Dependencies: See `pom.xml` for specific dependencies
 ### How to use
 1. `git clone https://github.com/BofeiC/JDD.git`
 
-2. run `runner/SearchGadgetChains.main`
+2. Adjust `config.properties` as needed.
 
-## Document
+3. run `runner/SearchGadgetChains.main`
 
+
+### !!!! Incorrect Evaluation.
+We have found that some people/works have not carefully read the JDD usage instructions and have incorrectly configured or reviewed the output of JDD. 
+
+For example, the paper *Gleipner-A Benchmark for Gadget Chain Detection in Java Deserialization Vulnerabilities* **incorrectly evaluated** JDD and **severely underestimated** its capabilities. 
+
+Here, we specifically highlight the most serious and common issue.
+
+##### Incorrectly treating the intermediate results logged by JDD as the final detected gadget chains, which led to missing a large number of complete gadget chains detected by JDD.
+
+* Its output is stored in the `outputs/gadgets/` directory, with each gadget chain corresponding to an `IOCD` stored in a separate `json` file. The `gadgetCallStack` field contains the chain.
+
+* Please do not mistakenly treat the intermediate results stored in `interInfos` as the final output of JDD. “interInfos” is clearly not the final detection result.
+
+In addition, please adjust `config.properties` as needed.
 
 ### Configuration item description
 - inputPath: test project path
@@ -31,9 +46,11 @@ Dependencies: See `pom.xml` for specific dependencies
     - json: needSerializable = false or true
 
 - sinkRules:
-  - available options: classLoad,invoke,jndi,exec,secondDes,custom,file (e.g., `sinkRules = invoke,jndi`)
+  - available options: classLoad,invoke,jndi,exec,secondDes,custom,file (e.g., `sinkRules = invoke,jndi,exec`)
     - A version that facilitates custom additions and modifications may come online later
     - Some sinks (in custom) that have not been added/tested after refactoring
+
+Note that, `invoke, jndi, and exec` are the most commonly used. Of course, to detect more comprehensive results, it is recommended to configure all the sinkRules.
 
 ### Disclaimer
 JDD is developed solely for academic research and to advance defensive techniques. It is not intended for unauthorized system attacks.
