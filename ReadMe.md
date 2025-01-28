@@ -81,7 +81,7 @@ Some of the fragments detected by JDD can be generalized across different deseri
 
 We've recently refactored JDD, resulting in improved performance in some applications. However, some features remain unstable, and we are actively working on fixing them.
 
-### Datasets
+### Datasets (A New Benchmark)
 - If you need the dataset, please send us an email (bfchen22@m.fudan.edu.cn) with the purpose. Thanks for understanding.
 
 In the email, please include a justification letter (PDF format) on official letterhead. 
