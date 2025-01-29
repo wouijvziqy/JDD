@@ -19,24 +19,17 @@ Dependencies: See `pom.xml` for specific dependencies
 3. run `runner/SearchGadgetChains.main`
 
 
-### !!!! Incorrect Evaluation.
-We have found that some people/works have not carefully read the JDD usage instructions and have incorrectly configured or reviewed the output of JDD. 
-
-For example, the paper *Gleipner-A Benchmark for Gadget Chain Detection in Java Deserialization Vulnerabilities* **incorrectly evaluated** JDD and **severely underestimated** its capabilities. 
-
-Here, we specifically highlight the most serious and common issue.
-
-##### Incorrectly treating the intermediate results logged by JDD as the final detected gadget chains, which led to missing a large number of complete gadget chains detected by JDD.
-
-* Its output is stored in the `outputs/gadgets/` directory, with each gadget chain corresponding to an `IOCD` stored in a separate `json` file. The `gadgetCallStack` field contains the chain.
-
-* Please do not mistakenly treat the intermediate results stored in `interInfos` as the final output of JDD. “interInfos” is clearly not the final detection result.
-
-In addition, please adjust `config.properties` as needed.
 
 ### Configuration item description
 - inputPath: test project path
 - outputDir: output directory. E.g. IOCDs
+  
+    JDD's outputs are stored in the `<outputDir>/<outPutDirName>` directory, with each gadget chain corresponding to an `IOCD` stored in a separate `json` file. For example, (the IOCD of the exact gadget chain described by Ysoserial in `Vaadin`)
+  
+  <img width="600" alt="截屏2025-01-29 21 36 12" src="https://github.com/user-attachments/assets/97b11963-b9ca-44d3-8bdd-7d5261d02f63" />
+  
+    Note that, do not mistakenly treat the intermediate results stored in `interInfos` as the final output of JDD.
+
 - outPutDirName：Name of the folder where IOCDs are stored
 - prioritizedGadgetChainLimit: Output N highest prioritized gadget chains
 - protocol: currently supports jdk, hessian, json (e.g. jackson, ...).
@@ -50,7 +43,10 @@ In addition, please adjust `config.properties` as needed.
     - A version that facilitates custom additions and modifications may come online later
     - Some sinks (in custom) that have not been added/tested after refactoring
 
-Note that, `invoke, jndi, and exec` are the most commonly used. Of course, to detect more comprehensive results, it is recommended to configure all the sinkRules.
+    Note that, `invoke, jndi, exec, classLoad` are the most commonly used. Of course, to detect more comprehensive chains, you can configure all the sinkRules.
+
+
+If you have any further questions related to the use of JDD, feel free to contact us.    
 
 ### Disclaimer
 JDD is developed solely for academic research and to advance defensive techniques. It is not intended for unauthorized system attacks.
