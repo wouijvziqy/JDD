@@ -332,7 +332,7 @@ public class ConfigUtil {
                     configProperties.getProperty(ConfigurationEnum.STORE_IN_DATABASE.toString(), "true");
             RegularConfig.prioritizedGadgetChainLimit = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.PRIORITIZED_GADGET_CHAIN_LIMIT.toString(), "-1"));
             RegularConfig.inputEXPInfosPath = getPathProperty(ConfigurationEnum.INPUT_EXP_PATH.toString());
-            BasicDataContainer.stackLenLimitNum = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.CHAIN_LIMIT.toString(), "20"));
+            BasicDataContainer.chainLimit = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.CHAIN_LIMIT.toString(), "20"));
             BasicDataContainer.stackLenLimitNum = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.FRAGMENT_LEN_LIMIT.toString(), "6"));
             RegularConfig.needSerializable = configProperties.getProperty(ConfigurationEnum.NEED_SERIALIZABLE.toString(), "true").equals("true");
             BasicDataContainer.needSerializable = RegularConfig.needSerializable;

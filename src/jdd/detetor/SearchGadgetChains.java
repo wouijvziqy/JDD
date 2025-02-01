@@ -46,7 +46,7 @@ import static util.ClassRelationshipUtils.isProxyMethod;
 
 @Slf4j
 public class SearchGadgetChains {
-    public static int timeThread = 15;
+    public static int timeThread = 30;
     public static DataflowDetect dataflowDetect = new DataflowDetect();
 
     public static void detect() throws Exception {
