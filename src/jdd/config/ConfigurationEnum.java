@@ -20,6 +20,7 @@ public enum ConfigurationEnum {
     SERIALIZABLE_INTERCEPTLEN("serializableInterceptLen"),
     DERIVATION_TYPE("derivationType"),
     SINK_RULES("sinkRules"),
+    ENTRY_METHODS("entryMethods"),
     PRIORITIZED_GADGET_CHAIN_LIMIT("prioritizedGadgetChainLimit"),
     LINK_MODE("linkMode"),
     TAINT_RULE_MODE("taintRuleMode"),

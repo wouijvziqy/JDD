@@ -1,5 +1,7 @@
 package rules.protocol;
 
+import config.ConfigUtil;
+import config.ConfigurationEnum;
 import config.RegularConfig;
 import tranModel.Rules.RuleUtils;
 import tranModel.Taint.Taint;
@@ -40,6 +42,11 @@ public abstract class AbstractProtocolCheckRule implements ProtocolCheckRule {
     public Set<SootMethod> fsMtds = new HashSet<>();
 
     public abstract void init();
+    public void updateEntryMethods(){
+        HashSet<String> importedEntryMethods = (HashSet<String>) Utils.toSet(ConfigUtil.configProperties.getProperty(ConfigurationEnum.ENTRY_METHODS.toString()));
+        if (!importedEntryMethods.isEmpty())
+            entryMethods = importedEntryMethods;
+    }
 
     void setSinkCheckRule(){
         if (RegularConfig.sinkRules.contains("classLoad")) {

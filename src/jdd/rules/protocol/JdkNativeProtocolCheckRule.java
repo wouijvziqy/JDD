@@ -18,10 +18,10 @@ public class JdkNativeProtocolCheckRule extends AbstractProtocolCheckRule {
 
     @Override
     public void init() {
-//        entryMethods = new HashSet<>(Arrays.asList("void readObjectNoData()", "void readObject(java.io.ObjectInputStream)",
-//                "void readExternal(java.io.ObjectInput)", "java.lang.Object readResolve()"));
-        entryMethods = new HashSet<>(Arrays.asList("int hashCode()"));
+        entryMethods = new HashSet<>(Arrays.asList("void readObjectNoData()", "void readObject(java.io.ObjectInputStream)",
+                "void readExternal(java.io.ObjectInput)", "java.lang.Object readResolve()"));
         this.setSinkCheckRule();
+        updateEntryMethods();
     }
 
     public boolean needEqualsTrigger() {

@@ -16,7 +16,7 @@ import java.util.jar.JarFile;
 @Slf4j
 public class ConfigUtil {
 
-    private static Properties configProperties = new Properties();
+    public static Properties configProperties = new Properties();
     // 解压过程中不做处理的文件夹列表
     private static String[] unDecompressDirList = { "META-INF", "OSGI-INF" };
     private static String[] specialDirList = { "/lib/", "WEB-INF/classes/" };
