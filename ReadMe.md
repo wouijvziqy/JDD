@@ -12,7 +12,7 @@ JDK 8
 Dependencies: See `pom.xml` for specific dependencies
 
 ### Documents
-- [How to use JDD](./document/Usage Guide.md)
+- [How to use JDD](./document/UsageGuide.md)
 - [How to extend JDD](./document/Extend.md)
 
 ### Issues
