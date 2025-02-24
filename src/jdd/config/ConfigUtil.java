@@ -336,6 +336,7 @@ public class ConfigUtil {
             BasicDataContainer.stackLenLimitNum = Integer.parseInt(configProperties.getProperty(ConfigurationEnum.FRAGMENT_LEN_LIMIT.toString(), "6"));
             RegularConfig.needSerializable = configProperties.getProperty(ConfigurationEnum.NEED_SERIALIZABLE.toString(), "true").equals("true");
             BasicDataContainer.needSerializable = RegularConfig.needSerializable;
+            RegularConfig.outPutIOCD = configProperties.getProperty(ConfigurationEnum.OUTPUT_IOCD.toString(), "true").equals("true");
             RegularConfig.linkMode = configProperties.getProperty(ConfigurationEnum.LINK_MODE.toString(), "strict").equals("strict")? "strict":"loose";
             RegularConfig.derivationType = configProperties.getProperty(ConfigurationEnum.DERIVATION_TYPE.toString(),"all");
             RegularConfig.taintRuleMode = configProperties.getProperty(ConfigurationEnum.TAINT_RULE_MODE.toString(), "strict");

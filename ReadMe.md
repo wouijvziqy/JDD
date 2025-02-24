@@ -11,42 +11,15 @@ JDK 8
 
 Dependencies: See `pom.xml` for specific dependencies
 
-### How to use
-1. `git clone https://github.com/BofeiC/JDD.git`
+### Documents
+- [How to use JDD](./document/Usage Guide.md)
+- [How to extend JDD](./document/Extend.md)
 
-2. Adjust `config.properties` as needed.
+### Issues
+Since the open-source release of JDD, we received some valuable questions and suggestions. Thanks to everyone who shared their thoughts! We’ve compiled and summarized these issues below.
+- [Common problems and update logs](./document/Log.md)
 
-3. run `runner/SearchGadgetChains.main`
-
-
-
-### Configuration item description
-- inputPath: test project path
-- outputDir: output directory. E.g. IOCDs
-  
-    JDD's outputs are stored in the `<outputDir>/<outPutDirName>` directory, with each gadget chain corresponding to an `IOCD` stored in a separate `json` file. For example, (the IOCD of the exact gadget chain described by Ysoserial in `Vaadin`)
-  
-  <img width="600" alt="截屏2025-01-29 21 36 12" src="https://github.com/user-attachments/assets/97b11963-b9ca-44d3-8bdd-7d5261d02f63" />
-  
-    Note that, do not mistakenly treat the intermediate results stored in `interInfos` as the final output of JDD.
-
-- outPutDirName：Name of the folder where IOCDs are stored
-- prioritizedGadgetChainLimit: Output N highest prioritized gadget chains
-- protocol: currently supports jdk, hessian, json (e.g. jackson, ...).
-  - needSerializable: please adjust them together with `protocol`.
-    - jdk: needSerializable = true
-    - hessian: needSerializable = false or true
-    - json: needSerializable = false or true
-
-- sinkRules:
-  - available options: classLoad,invoke,jndi,exec,secondDes,custom,file (e.g., `sinkRules = invoke,jndi,exec`)
-    - A version that facilitates custom additions and modifications may come online later
-    - Some sinks (in custom) that have not been added/tested after refactoring
-
-    Note that, `invoke, jndi, exec, classLoad` are the most commonly used. Of course, to detect more comprehensive chains, you can configure all the sinkRules.
-
-
-If you have any further questions related to the use of JDD, feel free to contact us.    
+Additionally, the current version of JDD still has many areas that could be optimized. We’d love to have experts with program analysis experience join us in further developing JDD. If you have any questions or suggestions, don’t hesitate to reach out directly!
 
 ### Disclaimer
 JDD is developed solely for academic research and to advance defensive techniques. It is not intended for unauthorized system attacks.
@@ -90,46 +63,3 @@ Also, confirm that the dataset will not be shared with others without our permis
 We also produce a proof-of-concept tool for generating payloads that exploit unsafe Java object deserialization. You can build on this tool to understand payload construction more easily.
 This software was created purely for the purpose of academic research and the development of effective defense techniques. It is also forbidden to use it for any illegal attack or profit.
 The link is: https://github.com/BofeiC/JDD-PocLearning
-
-### Test Example
-The test applications are located in the `testExample` directory. You can change the test application by changing the `inputPath` in the configuration file.
-
-test application example 1: `Groovy`
-```
-sun.reflect.'annotation'.AnnotationInvocationHandler: void readObject(java.io.ObjectInputStream)
-Proxy Map: entrySet()
-org.codehaus.groovy.runtime.ConversionHandler: java.lang.Object invoke(java.lang.Object,java.lang.reflect.Method,java.lang.Object[])
-org.codehaus.groovy.runtime.ConvertedClosure: java.lang.Object invokeCustom(java.lang.Object,java.lang.reflect.Method,java.lang.Object[])
-groovy.lang.Closure: java.lang.Object call(java.lang.Object[])
-```
-One of unknown gadget chain detected by JDD.
-```
-java.util.concurrent.ConcurrentHashMap: void readObject(java.io.ObjectInputStream)
-groovy.lang.GString: int hashCode()
-groovy.lang.GString: java.lang.String toString()
-groovy.lang.GString: java.io.Writer writeTo(java.io.Writer)
-groovy.lang.Closure: java.lang.Object call()
-```
-In this application, JDD detected gadget chains that do not require the dynamic proxy feature, which expands the range of protocols that can be attacked. The known gadget chain could only be used in protocols that support dynamic proxies (e.g. JDK, but could not be used in Hessian).
-
-
-test application example 2: `Vaadin`
-Known chain
-```
-javax.management.BadAttributeValueExpException: void readObject(java.io.ObjectInputStream)
-com.vaadin.data.util.PropertysetItem: java.lang.String toString()
-com.vaadin.data.util.NestedMethodProperty: java.lang.Object getValue()
-java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])
-```
-One of unknown gadget chain detected by JDD.
-```
-java.util.concurrent.ConcurrentHashMap: void readObject(java.io.ObjectInputStream)
-java.util.AbstractMap$SimpleEntry: boolean equals(java.lang.Object)
-java.util.AbstractMap: boolean access$000(java.lang.Object,java.lang.Object)
-java.util.AbstractMap: boolean eq(java.lang.Object,java.lang.Object)
-com.sun.org.apache.xpath.internal.objects.XStringForFSB: boolean equals(java.lang.Object)
-com.vaadin.data.util.AbstractProperty: java.lang.String toString()
-com.vaadin.data.util.LegacyPropertyHelper: java.lang.String legacyPropertyToString(com.vaadin.data.Property)
-com.vaadin.data.util.MethodProperty: java.lang.Object getValue()
-java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])
-```

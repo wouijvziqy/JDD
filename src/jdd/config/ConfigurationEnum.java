@@ -22,6 +22,7 @@ public enum ConfigurationEnum {
     SINK_RULES("sinkRules"),
     ENTRY_METHODS("entryMethods"),
     PRIORITIZED_GADGET_CHAIN_LIMIT("prioritizedGadgetChainLimit"),
+    OUTPUT_IOCD("outPutIOCD"),
     LINK_MODE("linkMode"),
     TAINT_RULE_MODE("taintRuleMode"),
     INPUT_EXP_PATH("inputEXPInfosPath"),
