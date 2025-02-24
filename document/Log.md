@@ -4,7 +4,7 @@
 
 - `IOCD`
 
-  set `outPutIOCD = True` in `config.properties`.
+  set `outPutIOCD = true` in `config.properties`.
 
   ```
   JDD's outputs are stored in the `<outputDir>/<outPutDirName>` directory, with each gadget chain corresponding to an `IOCD` stored in a separate `json` file. For example, (the IOCD of the exact gadget chain described by Ysoserial in `Vaadin`)
@@ -18,7 +18,7 @@
 
 - Just `gadget chain`
 
-  set `outPutIOCD = False` in `config.properties`.
+  set `outPutIOCD = false` in `config.properties`.
 
   Check the detected chains in `<outputDir>/<outPutDirName>/DetectedGadgetChains.txt`
 
