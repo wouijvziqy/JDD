@@ -438,7 +438,7 @@ public class SearchGadgetChains {
                     log.error("Timeout when analyzing method" + sourceGadget.getName() + ". Located in class"
                             + sourceGadget.getDeclaringClass());
                 }
-            }.run(60 * 2);
+            }.run(timeThread);
         } catch (Throwable e) {
             e.printStackTrace();
             descriptor.isEntry = false;

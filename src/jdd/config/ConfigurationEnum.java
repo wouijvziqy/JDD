@@ -24,6 +24,7 @@ public enum ConfigurationEnum {
     PRIORITIZED_GADGET_CHAIN_LIMIT("prioritizedGadgetChainLimit"),
     OUTPUT_IOCD("outPutIOCD"),
     LINK_MODE("linkMode"),
+    STRICT_CHECK_MODE("strictCheckMode"),
     TAINT_RULE_MODE("taintRuleMode"),
     INPUT_EXP_PATH("inputEXPInfosPath"),
     CHAIN_LIMIT("chainLimit"),
