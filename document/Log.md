@@ -35,11 +35,4 @@ Please note that if you wish for JDD to detect longer gadget chains, you should 
 
 For instance, if you aim to detect gadget chains of length 23 (such as the "Depth Tests" (20) from Table 4 in the "Gleipner" paper), you should set `fragmentLenLimit`=21 and `chainLimit`=23 in the `config.properties` file. (In this case, there is only one gadget fragment; although the test depth is 20, the total length of the chain is 23.)
 
-**Note that the `fragmentLenLimit` and `chainLimit` configuration options were expanded following the feedback from the "Gleipner" paper (on February 2, 2025).
-By appropriately configuring these options, JDD could fulfills the depth gadget chain category, as well as more Ysoserial replicas. We greatly appreciate the feedback from the Gleipner authors.**
-
-### Evaluation correction of JDD
-We have contacted the authors of Gleipner, retested, and corrected some discrepancies in the evaluation results of JDD. They are updating the paper.
-
-### Important Update Log
-###### February 2, 2025: Extended some useful configuration options for easier use, e.g., `fragmentLenLimit` and `chainLimit` in `config.properties`.
+We contacted the authors of Gleipner to re-run the tests and they corrected some discrepancies in the JDD evaluation results due to errors in viewing the JDD output and misconfiguration. They have updated the paper.

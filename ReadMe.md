@@ -48,7 +48,12 @@ If you use JDD or some of our code logic, or some of the interesting cases found
 
 Some of the fragments detected by JDD can be generalized across different deserialization protocols, e.g., we used JDD to detect a number of exploitable gadget chains in protocols outside the scope of the paper and obtained some new CVEs.
 
-We've recently refactored JDD, resulting in improved performance in some applications. However, some features remain unstable, and we are actively working on fixing them.
+We've recently refactored JDD, resulting in improved performance in some applications.
+
+### Supported Dynamic Features
+- Polymorphism
+- Dynamic proxies (need to switch to dpx branch)
+- Reflection
 
 ### Datasets (A New Benchmark)
 - If you need the dataset, please send us an email (bfchen22@m.fudan.edu.cn) with the purpose. Thanks for understanding.
