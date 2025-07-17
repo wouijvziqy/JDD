@@ -43,7 +43,9 @@ public abstract class AbstractProtocolCheckRule implements ProtocolCheckRule {
 
     public abstract void init();
     public void updateEntryMethods(){
-        HashSet<String> importedEntryMethods = (HashSet<String>) Utils.toSet(ConfigUtil.configProperties.getProperty(ConfigurationEnum.ENTRY_METHODS.toString()));
+        String importedEntryMethodsStr = ConfigUtil.configProperties.getProperty(ConfigurationEnum.ENTRY_METHODS.toString());
+        if (importedEntryMethodsStr == null)    return;
+        HashSet<String> importedEntryMethods = (HashSet<String>) Utils.toSet(importedEntryMethodsStr);
         if (!importedEntryMethods.isEmpty())
             entryMethods = importedEntryMethods;
     }
