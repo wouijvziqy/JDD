@@ -9,6 +9,8 @@ IEEE Symposium on Security and Privacy (SP), 2024
 ### Runtime Environment
 JDK 8
 
+Recommended macOS; this project has not been tested on Windows, and feedback indicates that its performance on Windows is unstable.
+
 Dependencies: See `pom.xml` for specific dependencies
 
 ### Documents
